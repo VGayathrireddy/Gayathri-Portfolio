@@ -1,0 +1,207 @@
+p {
+  margin: 0;
+}
+
+#intro {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-color: #000;
+    color: white;
+    text-align: center;
+
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center;  center horizontally */ 
+    align-items: center;  /* start at top */
+    justify-content: flex-start;
+    padding-top: 38vh;
+    box-sizing: border-box;
+    transition: opacity 1s ease, visibility 1s ease;
+    z-index: 1000;
+}
+
+#intro.fade-out {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.footsteps, #intro-text {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 3%;              /* 3% gap between images */
+  width: 90vw;
+  overflow: hidden;
+  justify-content: center;
+}
+
+.footsteps img{
+  flex: 1 1 auto;
+  max-width: 10vw;  /* Adjusted for gap */
+  height: auto;
+  transform: rotate(90deg);
+
+  position: relative;
+  display: inline-block; /* shrink-wrap the images */
+
+}
+
+
+.right-foot-img {
+  margin-bottom: 30px;
+  opacity: 0; /* start hidden */
+  animation: fadeSlideUpFoot 0.5s ease forwards;
+
+  display: inline-block;
+  position: relative;
+  top: 10px;
+}
+
+.left-foot-img {
+  margin-bottom: 30px;
+  opacity: 0; /* start hidden */
+  animation: fadeSlideDownFoot 0.5s ease forwards;
+
+  display: inline-block;
+  position: relative;
+  top: -10px;
+}
+
+@keyframes fadeSlideUpFoot {
+  0% {
+    opacity: 0;
+    transform: translateY(20px) rotate(90deg); /* start lower, keep rotation */
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) rotate(90deg); /* end at normal position, keep rotation */
+  }
+}
+
+@keyframes fadeSlideDownFoot {
+  0% {
+    opacity: 0;
+    transform: translateY(-20px) rotate(90deg); /* start higher, keep rotation */
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) rotate(90deg);
+  }
+}
+
+#intro-text p{
+  flex: 1 1 auto;
+  max-width: 30vw;  /* Adjusted for gap */
+  height: auto;
+
+  color: hsla(48, 80%, 50%, 0.759);
+  text-shadow: 0 0 20px #ffcc00;
+
+  font-size: calc(10vw * 0.4); 
+  font-weight: bold;
+  text-align: center;
+
+  
+  opacity: 0; /* start hidden */
+  animation: fadeSlideUp 0.7s ease forwards; /* run once */
+}
+
+@keyframes fadeSlideUp {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+/* for mountain and sun styles and animations */
+
+.mountain-background {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 60vh;           /* sets strong base */
+  max-height: 80vh;       /* prevents mountains from overwhelming the view */
+  overflow: hidden;
+  z-index: 0;
+  pointer-events: none;
+  background: transparent;
+}
+
+.mountain {
+  position: absolute;
+  bottom: 0;
+  width: 200%;
+  height: 100%;
+  background-repeat: repeat-x;
+  background-size: auto 100%;  /* height scales to container; width adjusts */
+  background-position: bottom;
+  opacity: 0.12;               /* soft visuals */
+  animation: moveMountains linear infinite;
+}
+
+/* Animation stays the same */
+@keyframes moveMountains {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+
+/* Updated mountain SVG paths with more height (increased viewBox height and path Y values) */
+
+.layer1 {
+  background-image: url('data:image/svg+xml;utf8,<svg viewBox="0 0 1440 500" xmlns="http://www.w3.org/2000/svg"><path fill="%23c4c428" d="M0,320L80,350C160,380,320,420,480,410C640,400,800,350,960,330C1120,310,1280,320,1360,330L1440,340L1440,500L1360,500C1280,500,1120,500,960,500C800,500,640,500,480,500C320,500,160,500,80,500L0,500Z"/></svg>');
+  animation-duration: 120s;
+  z-index: 1;
+}
+
+.layer2 {
+  background-image: url('data:image/svg+xml;utf8,<svg viewBox="0 0 1440 500" xmlns="http://www.w3.org/2000/svg"><path fill="%23d8d142" d="M0,360L80,350C160,340,320,320,480,310C640,300,800,280,960,290C1120,300,1280,340,1360,370L1440,400L1440,500L1360,500C1280,500,1120,500,960,500C800,500,640,500,480,500C320,500,160,500,80,500L0,500Z"/></svg>');
+  animation-duration: 90s;
+  z-index: 2;
+}
+
+.layer3 {
+  background-image: url('data:image/svg+xml;utf8,<svg viewBox="0 0 1440 500" xmlns="http://www.w3.org/2000/svg"><path fill="%23e5e47f" d="M0,400L80,380C160,360,320,330,480,320C640,310,800,330,960,345C1120,360,1280,380,1360,390L1440,400L1440,500L1360,500C1280,500,1120,500,960,500C800,500,640,500,480,500C320,500,160,500,80,500L0,500Z"/></svg>');
+  animation-duration: 70s;
+  z-index: 3;
+}
+
+#intro::before {
+  content: "";
+  position: absolute;
+  top: -30px;
+  right: -30px;
+  width: 110px;
+  height: 110px;
+  background: radial-gradient(circle at center, #ffb74d 40%, #ffcc80 70%, transparent 90%);
+  border-radius: 50%;
+  box-shadow:
+    0 0 12px 5px rgba(255, 183, 77, 0.3),
+    0 0 30px 18px rgba(255, 204, 128, 0.15),
+    0 0 45px 35px rgba(255, 204, 128, 0.1);
+  z-index: 0;
+  pointer-events: none;
+  animation: sunPulse 8s ease-in-out infinite;
+}
+
+@keyframes sunPulse {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow:
+      0 0 12px 5px rgba(255, 183, 77, 0.3),
+      0 0 30px 18px rgba(255, 204, 128, 0.15),
+      0 0 45px 35px rgba(255, 204, 128, 0.1);
+  }
+  50% {
+    transform: scale(1.05);
+    box-shadow:
+      0 0 18px 7px rgba(255, 183, 77, 0.4),
+      0 0 40px 25px rgba(255, 204, 128, 0.2),
+      0 0 55px 45px rgba(255, 204, 128, 0.15);
+  }
+}

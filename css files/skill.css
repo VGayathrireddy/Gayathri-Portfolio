@@ -1,6 +1,8 @@
 /* === SKILLS SECTION === */
 .skills {
   padding: 80px 10%;
+  padding-top: 30px;
+  padding-bottom: 30px;
   background-color: #000;
   color: #ccc;
 }

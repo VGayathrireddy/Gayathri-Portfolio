@@ -1,6 +1,8 @@
 /* === ABOUT SECTION === */
 .about {
   padding: 80px 10%;
+  padding-top: 30px;
+  padding-bottom: 30px;
   background-color: #000;
   color: #ccc;
 }
@@ -68,6 +70,7 @@
 .badge:hover {
   background-color: #222b40;
 }
+
 .icon {
   width: 18px;
   height: 18px;
@@ -86,6 +89,7 @@
   margin-bottom: 20px;
 }
 
+/* Subsections */
 .section-subblock h3 {
   color: #8ab4f8;
   font-size: 1.3rem;
@@ -97,6 +101,48 @@
   font-size: 1.05rem;
   color: #ccc;
   line-height: 1.6;
+}
+
+/* === QUICK FACTS === */
+.about-facts {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 16px;
+  margin: 20px 0 30px;
+}
+
+.fact-box {
+  background-color: #1a1a1a;
+  padding: 10px 10px;
+  border-radius: 8px;
+  color: #ccc;
+  font-size: 0.95rem;
+  align-items: center;
+  border-left: 4px solid #8ab4f8;
+  transition: background-color 0.3s ease;
+}
+.fact-box:hover {
+  background-color: #222b40;
+}
+
+/* === CTA Button === */
+.about-cta {
+  margin-top: 20px;
+}
+
+.btn.primary {
+  background-color: #8ab4f8;
+  color: #000;
+  padding: 12px 24px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: bold;
+  display: inline-block;
+  transition: background-color 0.3s ease;
+}
+
+.btn.primary:hover {
+  background-color: #5b8df8;
 }
 
 /* === RESPONSIVE === */
@@ -145,5 +191,9 @@
   .about-bio,
   .section-subblock p {
     font-size: 0.95rem;
+  }
+
+  .about-facts {
+    grid-template-columns: 1fr;
   }
 }

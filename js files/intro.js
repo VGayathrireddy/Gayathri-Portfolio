@@ -1,6 +1,9 @@
 const container = document.getElementById('footsteps-container');
 const textContainer = document.getElementById('intro-text');  // target div for text
 
+// ✅ HIDE HEADER initially
+document.querySelector("header").style.display = "none";
+
 const rightSrc = '../images/right-footprint.png';
 const leftSrc = '../images/left-footprint.png';
 
@@ -32,7 +35,7 @@ const intervalId = setInterval(() => {
     p.textContent = texts[pairIndex];
     textContainer.appendChild(p);
   }
-}, 600);
+}, 350);
 
 
 setTimeout(() => {
@@ -50,5 +53,5 @@ setTimeout(() => {
 
         portfolio.style.display = "block";
     }, 800); // matches the CSS transition time
-}, 4200); // wait before fading (adjust this time)
+}, 3000); // wait before fading (adjust this time)
 
